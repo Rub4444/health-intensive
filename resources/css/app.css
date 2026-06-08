@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+
+/* Keep Breeze auth form styling working under Tailwind v4 */
+@plugin "@tailwindcss/forms";
+
+/* Tell v4 where to scan for class names (replaces the old content array) */
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    /* Typography */
+    --font-sans: 'Manrope', 'Figtree', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
+
+    /* Warm beige / cream wellness backgrounds */
+    --color-cream-50: #fdfbf7;
+    --color-cream-100: #f8f3ea;
+    --color-cream-200: #f0e8d9;
+    --color-cream-300: #e6dac6;
+
+    /* Natural sage / forest green accents */
+    --color-sage-50: #f1f7f1;
+    --color-sage-100: #e0eee3;
+    --color-sage-200: #c3ddc9;
+    --color-sage-300: #9cc4a6;
+    --color-sage-400: #6ea67d;
+    --color-sage-500: #4d875e;
+    --color-sage-600: #3a6b49;
+    --color-sage-700: #2e553a;
+    --color-sage-800: #264530;
+    --color-sage-900: #1f3727;
+
+    /* Subtle subtle entrance + ambient motion */
+    --animate-float: float 7s ease-in-out infinite;
+    --animate-float-slow: float 10s ease-in-out infinite;
+    --animate-float-delayed: float 8s ease-in-out infinite 1.2s;
+    --animate-blob: blob 16s ease-in-out infinite;
+    --animate-blob-slow: blob 22s ease-in-out infinite;
+
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-14px);
+        }
+    }
+
+    @keyframes blob {
+        0%,
+        100% {
+            transform: translate(0, 0) scale(1);
+        }
+        33% {
+            transform: translate(20px, -18px) scale(1.06);
+        }
+        66% {
+            transform: translate(-16px, 12px) scale(0.96);
+        }
+    }
+}
+
+/* Soft film-grain noise overlay (organic, premium texture) */
+@utility bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
